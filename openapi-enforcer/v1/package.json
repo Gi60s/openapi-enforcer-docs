@@ -1,0 +1,22 @@
+{
+  "name": "openapi-enforcer-docs",
+  "version": "0.0.1",
+  "description": "Your OpenAPI document is a contract. OpenAPI Enforcer helps you to keep it.",
+  "main": "index.js",
+  "authors": {
+    "name": "James",
+    "email": "james.speirs@gmail.com"
+  },
+  "repository": "https://github.com/byu-oit/openapi-enforcer-docs/openapi-enforcer-docs",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  },
+  "dependencies": {
+    "vuepress-plugin-code-switcher": "^1.1.0"
+  }
+}
