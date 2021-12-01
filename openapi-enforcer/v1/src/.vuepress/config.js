@@ -1,4 +1,5 @@
 const { description } = require('../../package.json')
+const common = require('../../../common')
 
 module.exports = {
   /**
@@ -43,18 +44,9 @@ module.exports = {
       },
       {
         text: 'v1.x',
-        items: [
-          { text: 'v1.x', link: 'https://openapi-enforcer.com' },
-          { text: 'v2.x', link: 'https://openapi-enforcer.com' }
-        ]
+        items: common.versions
       },
-      {
-        text: 'Ecosystem',
-        items: [
-          { text: 'AWS Lambda', link: 'https://aws-lambda.openapi-enforcer.com' },
-          { text: 'Express Middleware', link: 'https://middleware.openapi-enforcer.com' },
-        ]
-      }
+      common.ecosystem
     ],
     sidebar: {
       '/guide/': [
