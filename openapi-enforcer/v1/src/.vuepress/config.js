@@ -42,10 +42,10 @@ module.exports = {
         text: 'API',
         link: '/api/'
       },
-      {
-        text: 'v1.x',
-        items: common.versions
-      },
+      // {
+      //   text: 'v1.x',
+      //   items: common.versions
+      // },
       common.ecosystem
     ],
     sidebar: {

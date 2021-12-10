@@ -2,8 +2,8 @@ module.exports = {
   ecosystem: {
     text: 'Ecosystem',
     items: [
-      { text: 'OpenAPI Enforcer (core)', link: 'https://openapi-enforcer.com' },
-      { text: 'AWS Lambda', link: 'https://aws-lambda.openapi-enforcer.com' }
+      { text: 'OpenAPI Enforcer', link: 'https://openapi-enforcer.com' },
+      // { text: 'AWS Lambda', link: 'https://aws-lambda.openapi-enforcer.com' }
     ]
   },
   versions: [
