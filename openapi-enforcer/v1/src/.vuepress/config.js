@@ -85,6 +85,10 @@ module.exports = {
       groups: {
         default: { ts: 'TypeScript', js: 'JavaScript' }
       }
-    }
+    },
+    // '@vuepress/plugin-google-analytics',
+    // {
+    //   ga: 'G-T5V8DJQT41'
+    // }
   ]
 }
