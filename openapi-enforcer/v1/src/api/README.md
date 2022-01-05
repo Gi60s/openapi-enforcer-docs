@@ -8,29 +8,29 @@ The OpenAPI or Swagger component that is returned will have one additional prope
 
 **Parameters:**
 
-| Parameter | Description | Type | Default |
-| --------- | ----------- | ---- | ------- |
-| **definition** | The OpenAPI document specification. If a `string` is provided then it is the file path to the OpenAPI definition. If an `object` is provided then that will be used as the OpenAPI document. | `string` or `object` | |
-| options | Configuration options. See below. | `object` | |
+| Parameter      | Description                                                                                                                                                                                  | Type                 | Default |
+|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|---------|
+| **definition** | The OpenAPI document specification. If a `string` is provided then it is the file path to the OpenAPI definition. If an `object` is provided then that will be used as the OpenAPI document. | `string` or `object` |         |
+| options        | Configuration options. See below.                                                                                                                                                            | `object`             |         |
 
 **Options Parameter**
 
-| Property | Description | Type  | Default |
-| --------- | ----------- | ---- | ------- |
-| fullResult | Get back a full [Enforcer Result](./enforcer-result.md) object. Enabling this will also cause warnings not to output to the console. | `boolean` | `false` |
-| hideWarnings | Do not log warning messages to the console when validating your OpenAPI document. If the `fullResult` option is set to `true` then warnings will not show regardless of this setting. | `boolean` | `false` |
-| componentOptions | Options to pass along to the enforcer components | `object` | See Component Options below. |
+| Property         | Description                                                                                                                                                                            | Type      | Default                      |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------------------------|
+| fullResult       | Get back a full [Enforcer Result](enforcer-result.md) object. Enabling this will also cause warnings not to output to the console.                                                     | `boolean` | `false`                      |
+| hideWarnings     | Do not log warning messages to the console when validating your OpenAPI document. If the `fullResult` option is set to `true` then warnings will not show regardless of this setting.  | `boolean` | `false`                      |
+| componentOptions | Options to pass along to the enforcer components                                                                                                                                       | `object`  | See Component Options below. |
 
 **Component Options**
 
-| Property | Description | Type  | Default |
-| --------- | ----------- | ---- | ------- |
-| apiSuggestions | Set to `false` to disable API suggestions. When enabled, warnings will be generated where your API goes against standards, indicating what the standard is along with a source reference. | `boolean` | `true` |
-| disablePathNormalization | Set to `true` to stop removing trailing slashes for incoming requests and from your paths definitions. | `boolean` | `false` | 
-| exceptionSkipCodes | An array of `string` values for all exception and warning codes to ignore. See the [Guide for Exceptions and Warnings](../guide/exceptions.md) for more details. | `string[]` | `[]` |
-| exceptionEscalateCodes | An array of `string` values for all exception warning codes that should be escalated to errors. See the [Guide for Exceptions and Warnings](../guide/exceptions.md) for more details. | `string[]` | `[]` |
-| requestBodyAllowedMethods | An `object` specifying which request methods to allow (or disallow) a request body for. The object you provide here will merge with the default value. | `object` | ` { post: true, put: true, options: true, head: true, patch: true } `
-| production | A `boolean` that when set to `true` will reduce the number of validations run on your OpenAPI document. This will allow your app to load a little faster for production. Do not use this setting if you are not sure that the OpenAPI document is valid otherwise other runtime errors are sure to occur. | `boolean` | `false` |   
+| Property                  | Description                                                                                                                                                                                                                                                                                               | Type       | Default                                                               |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------------------------------------------------------------------|
+| apiSuggestions            | Set to `false` to disable API suggestions. When enabled, warnings will be generated where your API goes against standards, indicating what the standard is along with a source reference.                                                                                                                 | `boolean`  | `true`                                                                |
+| disablePathNormalization  | Set to `true` to stop removing trailing slashes for incoming requests and from your paths definitions.                                                                                                                                                                                                    | `boolean`  | `false`                                                               | 
+| exceptionSkipCodes        | An array of `string` values for all exception and warning codes to ignore. See the [Guide for Exceptions and Warnings](../guide/exceptions.md) for more details.                                                                                                                                          | `string[]` | `[]`                                                                  |
+| exceptionEscalateCodes    | An array of `string` values for all exception warning codes that should be escalated to errors. See the [Guide for Exceptions and Warnings](../guide/exceptions.md) for more details.                                                                                                                     | `string[]` | `[]`                                                                  |
+| requestBodyAllowedMethods | An `object` specifying which request methods to allow (or disallow) a request body for. The object you provide here will merge with the default value.                                                                                                                                                    | `object`   | ` { post: true, put: true, options: true, head: true, patch: true } ` |
+| production                | A `boolean` that when set to `true` will reduce the number of validations run on your OpenAPI document. This will allow your app to load a little faster for production. Do not use this setting if you are not sure that the OpenAPI document is valid otherwise other runtime errors are sure to occur. | `boolean`  | `false`                                                               |   
 
 **Returns:** A Promise
 
@@ -105,8 +105,8 @@ Enforcer(definition)
 
 Set global configuration options for all Enforcer instances.
 
-| Option | Description | Default |
-| ------ | ----------- | ------- |
+| Option          | Description                                                                                                                                                                                           | Default |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
 | useNewRefParser | Use the custom built ref parser to resolve multi file discriminator references. This feature is currently in beta. Please report issues on github. https://github.com/byu-oit/openapi-enforcer/issues | `false` |
 
 **Example**
@@ -122,9 +122,9 @@ Enforcer.config.useNewRefParser = true; // use custom ref parser
 
 Resolves all of the `$ref` values in a definition, reorganizes `$ref` values to meet the OpenAPI specification, and returns an object that can be stringified with `JSON.stringify`.
 
-| Parameter | Description | Type | Default |
-| --------- | ----------- | ---- | ------- |
-| **definition** | A `string` for the file path to the OpenAPI definition or an `object` to bundle. | `string` or `object` | |
+| Parameter      | Description                                                                      | Type                 | Default |
+|----------------|----------------------------------------------------------------------------------|----------------------|---------|
+| **definition** | A `string` for the file path to the OpenAPI definition or an `object` to bundle. | `string` or `object` |         |
 
 **Parameters:**
 
@@ -138,9 +138,9 @@ Resolves all of the `$ref` values in a definition, reorganizes `$ref` values to 
 
 Resolves all of the `$ref` values in a definition and returns the dereferenced object.
 
-| Parameter | Description | Type | Default |
-| --------- | ----------- | ---- | ------- |
-| **definition** | A `string` for the file path to the OpenAPI definition or an `object` to dereference. | `string` or `object` | |
+| Parameter      | Description                                                                           | Type                 | Default |
+|----------------|---------------------------------------------------------------------------------------|----------------------|---------|
+| **definition** | A `string` for the file path to the OpenAPI definition or an `object` to dereference. | `string` or `object` |         |
 
 **Parameters:**
 
@@ -164,21 +164,39 @@ const { Enforcer } = require('openapi-enforcer');
 
 `Enforcer.Exception : EnforcerException`
 
-A static reference to the the [EnforcerException class](./enforcer-exception.md).
+A static reference to the the [EnforcerException class](enforcer-exception.md).
 
 ## Enforcer.Result
 
 `Enforcer.Result : EnforcerResult`
 
-A static reference to the the [EnforcerResult class](./enforcer-result.md).
+A static reference to the the [EnforcerResult class](enforcer-result.md).
 
 ## Enforcer.v2_0
 
 `Enforcer.v2_0 : object`
 
-An object containing class constructors for all [components](./components/index.md) that are part of the Swagger 2.0 specification:
+An object containing class constructors for all components that are part of the Swagger 2.0 specification:
 
-{% include v2_0-components.html %}
+- Contact
+- ExternalDocumentation
+- Header
+- Info
+- Items
+- License
+- [Operation](components/operation.md)
+- Parameter
+- PathItem
+- Paths
+- Reference
+- Response
+- Responses
+- [Schema](components/schema.md)
+- SecurityRequirement
+- SecurityScheme
+- [Swagger](components/swagger.md)
+- Tag
+- Xml
 
 **Example: Creating Schema**
 
@@ -191,9 +209,37 @@ const [ schema ] = Enforcer.v2_0.Schema({ type: 'string' })
 
 `Enforcer.v3_0 : object`
 
-An object containing class constructors for all [components](./components/index.md) that are part of the OpenAPI specification (OAS) 3 specification:
+An object containing class constructors for all components that are part of the OpenAPI specification (OAS) 3 specification:
 
-{% include v3_0-components.html %}
+- Callback
+- Components
+- Contact
+- Encoding
+- Example
+- ExternalDocumentation
+- Header
+- Info
+- License
+- Link
+- MediaType
+- OAuthFlow
+- OAuthFlows
+- [OpenAPI](components/openapi.md)
+- [Operation](components/operation.md)
+- Parameter
+- PathItem
+- Paths
+- Reference
+- RequestBody
+- Response
+- Responses
+- [Schema](components/schema.md)
+- SecurityRequirement
+- SecurityScheme
+- Server
+- ServerVariable
+- Tag
+- Xml
 
 **Example: Creating Schema**
 

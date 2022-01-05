@@ -54,7 +54,11 @@ module.exports = {
           title: 'Guide',
           collapsable: false,
           children: [
-            ''
+            '',
+            'enforcer-exception',
+            'exceptions',
+            'enforcer-result',
+            'component-plugins'
           ]
         }
       ],
@@ -69,7 +73,9 @@ module.exports = {
             'components/schema',
             'components/swagger'
           ]
-        }
+        },
+        'enforcer-exception',
+        'enforcer-result'
       ]
     }
   },
