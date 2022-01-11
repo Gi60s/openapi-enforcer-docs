@@ -6,15 +6,15 @@ Producing mock responses is useful during the development of your API or during 
 
 A mocked response can be generated from:
 
-1. Implemented Mock Response
-2. Mock from Example
-3. Mock from Schema using Random Generation
+1. [Implemented Mock Response](#implemented-mock-responses)
+2. [Mock from Example](#mock-from-example)
+3. [Mock from Schema](#mock-from-schema) using Random Generation
 
 The implemented mock response takes precedence, then examples, and finally schema generated values. The mode that is used to create a mock response can also be selected when using [explicit mocking](#explicit-mocking).
 
 ### Implemented Mock Responses
 
-If a path has an implemented mock response then it will be the mode used unless otherwise specified by an [explicit mock directive](#explicit-mocking).
+An implemented mock response is one where you have written some code to provide a custom response.
 
 Implemented mocks allow you to use a [mock store](#mock-store) that more closely simulates a real API, allowing the client to store and retrieve data based on a temporary session.
 
@@ -22,6 +22,8 @@ Setting up an implemented mock is a two step process:
 
 1. In your OpenAPI document specify `x-mock-implemented: true` for the implemented operations. (The property name can be changed in the [init middleware options](./init#init-options).
 2. For implemented operations, write code that checks for the `mockMode` or `mockStore` properties on the express request object. Those properties indicate a request for a mocked response.
+
+If a path has an implemented mock response then it will be the mode used when producing a mock response unless otherwise specified by an [explicit mock directive](#explicit-mocking).
 
 **openapi.yml**
 
@@ -104,7 +106,7 @@ Here are some examples of either a header or query string parameter can be set t
 
 Fallback mocking is useful for when your API is under development and you'd like to let clients use the API before it is complete.
 
-This type of mocking requires that you use the [mock middleware](./api#mock). Read the [mock middleware API documentation](./api#mock) for examples on how to use this.
+This type of mocking requires that you use the [mock middleware](../api/#mock). Read the [mock middleware API documentation](./api#mock) for examples on how to use this.
 
 ## Mock Store
 
