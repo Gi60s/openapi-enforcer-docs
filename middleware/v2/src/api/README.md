@@ -102,7 +102,9 @@ Initialize the middleware. You need to call this function as an express middlewa
 
 | Property | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
+| allowMockNoResponseSchema | `boolean` | `true` | Allow the mocks to send back an empty response if no schema is provided. |
 | allowOtherQueryParameters | `boolean` or `string[]` | `false` | A boolean or string array. If a boolean, `true` indicates that any query parameters (even those not defined in your OpenAPI spec) are allowed. Using `false` indicates that no query parameters outside of those defined in your OpenAPI spec are allowed. Specifying an array of strings specifies what specific query parameters are allowed outside of your OpenAPI spec. |
+| baseUrl | `string` | `/` | The base path to use for serving middleware on. If requests start with `/api` then set the base path to `"/api"`. |
 | handleBadRequest | `boolean` | `true` | How to handle invalid requests. If `true` a 400 response is sent back automatically. This means that a route you've defined will not be called when the request is invalid. If `false` and the request was invalid then your route will still execute but the `enforcer` property will not be set on the `req` and `res` objects. |
 | handleBadResponse | `boolean` | `true` | How to handle invalid responses. If `true` a 500 response is sent back automatically, if `false` the next middleware is called with the error and the error will be logged to the console. |
 | handleNotFound | `boolean` | `true` | How to handle requests for paths that do not exist. If `true` a 404 response is sent back automatically, if `false` the `enforcer` property is not set on the `req` and `res` objects. |
