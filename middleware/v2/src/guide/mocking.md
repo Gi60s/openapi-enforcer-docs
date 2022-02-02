@@ -20,7 +20,7 @@ Implemented mocks allow you to use a [mock store](#mock-store) that more closely
 
 Setting up an implemented mock is a two step process:
 
-1. In your OpenAPI document specify `x-mock-implemented: true` for the implemented operations. (The property name can be changed in the [init middleware options](./init#init-options).
+1. In your OpenAPI document specify `x-mock-implemented: true` for the implemented operations. (The property name can be changed in the [init middleware options](../api/#init-options-2).
 2. For implemented operations, write code that checks for the `mockMode` or `mockStore` properties on the express request object. Those properties indicate a request for a mocked response.
 
 If a path has an implemented mock response then it will be the mode used when producing a mock response unless otherwise specified by an [explicit mock directive](#explicit-mocking).
