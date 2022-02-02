@@ -12,8 +12,8 @@ This method is not technically a constructor function because it does not use th
 
 **Parameters**
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
+| Parameter       | Type    | Description                                                                                                                                                                                  |
+|-----------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | enforcerPromise | Promise | **REQUIRED.** An [OpenAPI Enforcer](https://www.npmjs.com/package/openapi-enforcer) promise. The easiest way to get this is to call the Enforcer factory. See the example below for details. |
 
 **Returns** an object with the following methods:
@@ -39,22 +39,22 @@ Generate an endpoint for serving your OpenAPI documentation using Redoc. This en
 
 **Parameters**
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| options | [Docs Options](#docs-options) | An optional parameter that describes how the docs middleware should work. |
+| Parameter | Type                          | Description                                                               |
+|-----------|-------------------------------|---------------------------------------------------------------------------|
+| options   | [Docs Options](#init-options) | An optional parameter that describes how the docs middleware should work. |
 
 ###### Init Options
 
-| Property | Type | Default | Description |
-| -------- | ---- | ------- | ----------- |
-| padding | `string` | `0` | Specify the padding to wrap the docs page. Specifying an empty string will set the body margin and padding to defaults. Specifying any other value will set the body margin to zero and set the padding to the value specified. |
-| preRedocInitScripts | `string[]` | `[]` | An array of strings for each JavaScript source to load prior to calling the Redoc init function. |
-| postRedocInitScripts | `string[]` | `[]` | An array of strings for each JavaScript source to load after to calling the Redoc init function. |
-| redoc | `object` | | Redoc specific options. See redoc.cdnVersion and redoc.options for details. |
-| redoc.cdnVersion | `string` | | If specified then the public CDN will be used to get the redoc library with the version you've specified. If not specified then the middleware will look to see if you've installed the NPM Redoc package and will use your installed Redoc library. If not specified and you have not installed the Redoc package then it will use the `next` version off the CDN. |
-| redoc.options | `object` | | Options to pass directly to the redoc library during initialization. |
-| styleSheets | `string[]` | | An array of strings for each CSS href to load in the head of the HTML. |
-| title | `string` | | The HTML title for the page. Defaults to the title specified in the OpenAPI document info.title property with the exception that if that title is a blank string then it will use `"API Documentation"` as the title. |
+| Property             | Type       | Default | Description                                                                                                                                                                                                                                                                                                                                                         |
+|----------------------|------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| padding              | `string`   | `0`     | Specify the padding to wrap the docs page. Specifying an empty string will set the body margin and padding to defaults. Specifying any other value will set the body margin to zero and set the padding to the value specified.                                                                                                                                     |
+| preRedocInitScripts  | `string[]` | `[]`    | An array of strings for each JavaScript source to load prior to calling the Redoc init function.                                                                                                                                                                                                                                                                    |
+| postRedocInitScripts | `string[]` | `[]`    | An array of strings for each JavaScript source to load after to calling the Redoc init function.                                                                                                                                                                                                                                                                    |
+| redoc                | `object`   |         | Redoc specific options. See redoc.cdnVersion and redoc.options for details.                                                                                                                                                                                                                                                                                         |
+| redoc.cdnVersion     | `string`   |         | If specified then the public CDN will be used to get the redoc library with the version you've specified. If not specified then the middleware will look to see if you've installed the NPM Redoc package and will use your installed Redoc library. If not specified and you have not installed the Redoc package then it will use the `next` version off the CDN. |
+| redoc.options        | `object`   |         | Options to pass directly to the redoc library during initialization.                                                                                                                                                                                                                                                                                                |
+| styleSheets          | `string[]` |         | An array of strings for each CSS href to load in the head of the HTML.                                                                                                                                                                                                                                                                                              |
+| title                | `string`   |         | The HTML title for the page. Defaults to the title specified in the OpenAPI document info.title property with the exception that if that title is a blank string then it will use `"API Documentation"` as the title.                                                                                                                                               |
 
 **Example**
 
@@ -94,25 +94,25 @@ Initialize the middleware. You need to call this function as an express middlewa
 
 **Parameters**
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| options | [Init Options](#init-options) | An optional parameter that describes how the init middleware should work. |
+| Parameter | Type                            | Description                                                               |
+|-----------|---------------------------------|---------------------------------------------------------------------------|
+| options   | [Init Options](#init-options-2) | An optional parameter that describes how the init middleware should work. |
 
 ###### Init Options
 
-| Property | Type | Default | Description |
-| -------- | ---- | ------- | ----------- |
-| allowMockNoResponseSchema | `boolean` | `true` | Allow the mocks to send back an empty response if no schema is provided. |
-| allowOtherQueryParameters | `boolean` or `string[]` | `false` | A boolean or string array. If a boolean, `true` indicates that any query parameters (even those not defined in your OpenAPI spec) are allowed. Using `false` indicates that no query parameters outside of those defined in your OpenAPI spec are allowed. Specifying an array of strings specifies what specific query parameters are allowed outside of your OpenAPI spec. |
-| baseUrl | `string` | `/` | The base path to use for serving middleware on. If requests start with `/api` then set the base path to `"/api"`. |
-| handleBadRequest | `boolean` | `true` | How to handle invalid requests. If `true` a 400 response is sent back automatically. This means that a route you've defined will not be called when the request is invalid. If `false` and the request was invalid then your route will still execute but the `enforcer` property will not be set on the `req` and `res` objects. |
-| handleBadResponse | `boolean` | `true` | How to handle invalid responses. If `true` a 500 response is sent back automatically, if `false` the next middleware is called with the error and the error will be logged to the console. |
-| handleNotFound | `boolean` | `true` | How to handle requests for paths that do not exist. If `true` a 404 response is sent back automatically, if `false` the `enforcer` property is not set on the `req` and `res` objects. |
-| handleMethodNotAllowed | `boolean` | `true` | How to handle method not allowed. If `true` a 405 response is sent back automatically, if `false` the `enforcer` property is not set on the `req` and `res` objects. |
-| mockHeader | `string` | `"x-mock"` | The name to use for the mocking header. Set to an empty string to disable mock requests via the header. [Learn about mocking.](./mocking) |
-| mockQuery | `string` | `"x-mock"` | The name to use for the mocking query parameter. Set to an empty string to disable mock requests via the query parameter. (The value specified will automatically be added to the `allowedOtherQueryParameters`.) [Learn about mocking.](./mocking) |
-| mockStore | [MockStore](mocking#mock-store) | [CookieStore](mocking) | This mock store to use if the request is an implemented mock request. [Learn about mocking.](./mocking) |
-| xMockImplemented | `string` | `x-mock-implemented` | The name of the OpenAPI extension property that identifies if the operation has a mock response implemented in your code. [Learn about mocking.](./mocking) |
+| Property                  | Type                            | Default                | Description                                                                                                                                                                                                                                                                                                                                                                  |
+|---------------------------|---------------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| allowMockNoResponseSchema | `boolean`                       | `true`                 | Allow the mocks to send back an empty response if no schema is provided.                                                                                                                                                                                                                                                                                                     |
+| allowOtherQueryParameters | `boolean` or `string[]`         | `false`                | A boolean or string array. If a boolean, `true` indicates that any query parameters (even those not defined in your OpenAPI spec) are allowed. Using `false` indicates that no query parameters outside of those defined in your OpenAPI spec are allowed. Specifying an array of strings specifies what specific query parameters are allowed outside of your OpenAPI spec. |
+| baseUrl                   | `string`                        | `/`                    | The base path to use for serving middleware on. If requests start with `/api` then set the base path to `"/api"`.                                                                                                                                                                                                                                                            |
+| handleBadRequest          | `boolean`                       | `true`                 | How to handle invalid requests. If `true` a 400 response is sent back automatically. This means that a route you've defined will not be called when the request is invalid. If `false` and the request was invalid then your route will still execute but the `enforcer` property will not be set on the `req` and `res` objects.                                            |
+| handleBadResponse         | `boolean`                       | `true`                 | How to handle invalid responses. If `true` a 500 response is sent back automatically, if `false` the next middleware is called with the error and the error will be logged to the console.                                                                                                                                                                                   |
+| handleNotFound            | `boolean`                       | `true`                 | How to handle requests for paths that do not exist. If `true` a 404 response is sent back automatically, if `false` the `enforcer` property is not set on the `req` and `res` objects.                                                                                                                                                                                       |
+| handleMethodNotAllowed    | `boolean`                       | `true`                 | How to handle method not allowed. If `true` a 405 response is sent back automatically, if `false` the `enforcer` property is not set on the `req` and `res` objects.                                                                                                                                                                                                         |
+| mockHeader                | `string`                        | `"x-mock"`             | The name to use for the mocking header. Set to an empty string to disable mock requests via the header. [Learn about mocking.](./mocking)                                                                                                                                                                                                                                    |
+| mockQuery                 | `string`                        | `"x-mock"`             | The name to use for the mocking query parameter. Set to an empty string to disable mock requests via the query parameter. (The value specified will automatically be added to the `allowedOtherQueryParameters`.) [Learn about mocking.](./mocking)                                                                                                                          |
+| mockStore                 | [MockStore](mocking#mock-store) | [CookieStore](mocking) | This mock store to use if the request is an implemented mock request. [Learn about mocking.](./mocking)                                                                                                                                                                                                                                                                      |
+| xMockImplemented          | `string`                        | `x-mock-implemented`   | The name of the OpenAPI extension property that identifies if the operation has a mock response implemented in your code. [Learn about mocking.](./mocking)                                                                                                                                                                                                                  |
 
 **Returns** an express middleware function.
 
@@ -197,10 +197,10 @@ Add an event listener. Currently, only the [route](#route) middleware emits even
 
 **Parameters**
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| type | `string` | The type of event to listen for. |
-| handler | `Function` | The function to call when the event occurs. |
+| Parameter | Type       | Description                                 |
+|-----------|------------|---------------------------------------------|
+| type      | `string`   | The type of event to listen for.            |
+| handler   | `Function` | The function to call when the event occurs. |
 
 **Returns** nothing.
 
@@ -216,19 +216,19 @@ For details, check out the [Route Builder](route-builder) documentation.
 
 **Parameters**
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| controllers | `Object` | The route controller map object. | 
-| options | [Route Options](#route-options) | An optional parameter that can define how the route builder works. |
+| Parameter   | Type                            | Description                                                        |
+|-------------|---------------------------------|--------------------------------------------------------------------|
+| controllers | `Object`                        | The route controller map object.                                   | 
+| options     | [Route Options](#route-options) | An optional parameter that can define how the route builder works. |
 
 ###### Route Options
 
-| Property | Type | Default | Description |
-| -------- | ---- | ------- | ----------- |
-| commonDependencyKey | `string` | `common` | If using mapped dependencies then this is the mapping name for common dependencies. Learn more about this on the [Route Builder page](./route-builder#dependency-injection). |
-| lazyLoad | `boolean` | `false` | Whether to lazy load your controllers. Lazy loading will reduce how long it takes to start your app (although probably not by much) at the cost of having to load each controller the first time it is requested. |
-| xController | `string` | `x-controller` | The name of the property to look for in your OpenAPI document to specify the controller to use for an operation. |
-| xOperation | `string` | `x-operation` | The name of the property to look for in your OpenAPI document to specify the controller's operation to use for an operation. The OpenAPI property `operationId` can be used in place of this value. |
+| Property            | Type      | Default        | Description                                                                                                                                                                                                       |
+|---------------------|-----------|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| commonDependencyKey | `string`  | `common`       | If using mapped dependencies then this is the mapping name for common dependencies. Learn more about this on the [Route Builder page](./route-builder#dependency-injection).                                      |
+| lazyLoad            | `boolean` | `false`        | Whether to lazy load your controllers. Lazy loading will reduce how long it takes to start your app (although probably not by much) at the cost of having to load each controller the first time it is requested. |
+| xController         | `string`  | `x-controller` | The name of the property to look for in your OpenAPI document to specify the controller to use for an operation.                                                                                                  |
+| xOperation          | `string`  | `x-operation`  | The name of the property to look for in your OpenAPI document to specify the controller's operation to use for an operation. The OpenAPI property `operationId` can be used in place of this value.               |
 
 **Returns** an express middleware.
 
