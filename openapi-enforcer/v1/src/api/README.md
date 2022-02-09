@@ -105,9 +105,10 @@ Enforcer(definition)
 
 Set global configuration options for all Enforcer instances.
 
-| Option          | Description                                                                                                                                                                                           | Default |
-|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| useNewRefParser | Use the custom built ref parser to resolve multi file discriminator references. This feature is currently in beta. Please report issues on github. https://github.com/byu-oit/openapi-enforcer/issues | `false` |
+| Option                         | Description                                                                                                                                                                                           | Default |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| examplesWarnAdditionalProperty | Set whether warnings should be produced for examples that have additional properties.                                                                                                                 | `true`  |
+| useNewRefParser                | Use the custom built ref parser to resolve multi file discriminator references. This feature is currently in beta. Please report issues on github. https://github.com/byu-oit/openapi-enforcer/issues | `false` |
 
 **Example**
 
