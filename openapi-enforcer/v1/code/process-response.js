@@ -20,4 +20,4 @@ async function run () {
   console.log(res.body, res.headers)
 }
 
-run.catch(console.error)
+run().catch(console.error)
