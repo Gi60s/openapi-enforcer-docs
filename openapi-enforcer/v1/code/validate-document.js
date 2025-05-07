@@ -9,4 +9,4 @@ async function run () {
   if (openapi !== undefined) console.log('Document is valid')
 }
 
-run.catch(console.error)
+run().catch(console.error)
